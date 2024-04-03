@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'gpsdomundo_theme.dart';
 
 void main() {
   runApp(const GpsDoMundo());
@@ -10,7 +9,7 @@ class GpsDoMundo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GpsdoMundoTheme.dark();
+    final theme = ThemeData.dark();
 
     return MaterialApp(
       theme: theme,
@@ -28,7 +27,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  int _selectedIndex = 0;  
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -38,7 +37,7 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GpsdoMundoTheme.dark();
+    final theme = ThemeData.dark();
 
     return Scaffold(
       appBar: AppBar(
@@ -48,13 +47,10 @@ class HomeState extends State<Home> {
         ),
       ),
       body: Center(
-        child: Text(
-          'Vamos cozinhar',
-          style: theme.textTheme.displayLarge,
-        ),
+        child: _buildPage(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex, 
+        currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -72,5 +68,33 @@ class HomeState extends State<Home> {
         ],
       ),
     );
+  }
+
+  Widget _buildPage(int index) {
+    switch (index) {
+      case 0:
+        return Container(
+          color: Colors.red,
+          child: Center(
+            child: Text('Conteúdo da guia Home'),
+          ),
+        );
+      case 1:
+        return Container(
+          color: Colors.blue,
+          child: Center(
+            child: Text('Conteúdo da guia Search'),
+          ),
+        );
+      case 2:
+        return Container(
+          color: Colors.green,
+          child: Center(
+            child: Text('Conteúdo da guia Profile'),
+          ),
+        );
+      default:
+        return Container();
+    }
   }
 }
