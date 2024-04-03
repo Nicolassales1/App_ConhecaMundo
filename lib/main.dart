@@ -9,12 +9,12 @@ class GpsDoMundo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ThemeData.dark();
+    final darkTheme = ThemeData.dark();
 
     return MaterialApp(
-      theme: theme,
+      theme: darkTheme,
       title: 'GPS do Mundo',
-      home: Home(),
+      home: const Home(),
     );
   }
 }
@@ -37,7 +37,7 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ThemeData.dark();
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -75,21 +75,21 @@ class HomeState extends State<Home> {
       case 0:
         return Container(
           color: Colors.red,
-          child: Center(
+          child: const Center(
             child: Text('Conteúdo da guia Home'),
           ),
         );
       case 1:
         return Container(
           color: Colors.blue,
-          child: Center(
+          child: const Center(
             child: Text('Conteúdo da guia Search'),
           ),
         );
       case 2:
         return Container(
           color: Colors.green,
-          child: Center(
+          child: const Center(
             child: Text('Conteúdo da guia Profile'),
           ),
         );
